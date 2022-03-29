@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Tool for steganography and timestamping">
+  <meta name="author" content="Dan Kercher and Vivek Bigelow">
+  <meta name='viewport'
+      content='width=device-width, initial-scale=1, maximum-scale=1'>
+
+  <title>Stegastamp</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href='css/main.css' type='text/css' rel='stylesheet' />
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.min.css" rel="stylesheet">
+
+  <!-- scripts for steganography -->
+  <script src='js/sjcl.js' type='text/javascript'></script>
+  <script src='js/main.js' type='text/javascript'></script>
+
+</head>
+
+
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#steps">Instructions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">Stegastamp</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">A step-by-step guide using open source tools to insert author and license data into an image with
+          steganography and timestamp a file to prove creation date.</h2>
+        <a href="#steps" class="btn btn-primary js-scroll-trigger">Stegastamp a file</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about-section text-center">
+    <div class="container">
+      <div class="row">
+        <div id="about" class="col-lg-8 mx-auto">
+          <h2  class="text-white mb-4">How it works</h2>
+          <p class="text-white-50">Stegastamp is a process to easily and quickly protect the authorship of images before posting them to the internet. The intention is to create
+            a simple process by which content creators can embed their name and creative license into an image then timestamp the embedded file to authenticate its creation date.
+            <br />
+            <br />STEGA-STAMP: 'stega' refers to the use of an opensource <a href="https://github.com/oakes/PixelJihad" target="_blank">steganography library</a>
+            to embed words into an image file. "stamp" refers to the use of an open <a href="https://opentimestamps.org/" target="_blank">blockchain timestamping service</a>.
+            The use of free and open services aids in the transparency and authenticity of authorship proofs.
+            <br />
+            <br />Other methods for proving authorship include file metadata and sending files through physical or electronic mail. These methods often elicit suspicion of tampering
+             and can make it difficult to verify authoriship on a mass scale or anonymously in the case an author using an alias.
+            <br />
+            <br />Steganography without timestamping: Changing or compressing an image can break steganography. This allows someone to use their own steganography after the author
+            giving the author no way to prove that they were the original.
+            <br />
+            <br />Timestamping without steganography: Sending an .ots timestamp file so others can verify the date allows anyone with access to the .ots file
+            to claim they are the original author.
+            <br />
+            <br />Steganography + Timestamping: Authors can send their original file and .ots file to anyone online. The .ots file verifies the date, and the original verifies the
+            author. Subsequent steganography would result in a mismatch with the .ots file hash.
+
+          </p>
+        </div>
+      </div>
+      <!--<img src="img/ipad.png" class="img-fluid" alt="">-->
+    </div>
+
+    <div id="steps" class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-white mb-4">Creation and Proof Steps</h2>
+          <p class="text-white-50">Stegastamp Creation Steps
+            <br />Step 1: Click "Choose File" to upload an image you created.
+            <br />Step 2: Enter author name and license. Optionally, enter a password for private proofs.
+            <br />For creative license suggestions, see <a href="https://creativecommons.org/licenses/" target="_blank">Creative Commons Licenses</a>
+            <br />Step 3: Upload the newly saved image to <a href="https://opentimestamps.org/#stamp-and-verify" target="_blank">OpenTimestamps.org</a>
+            and save the .ots file alongside your encrypted image.
+            <br />
+            <br />
+            <br />Stegastamp Proof Steps
+            <br />Step 1: Click "Choose File" to upload a stegastamped image.
+            <br />Step 2: Confirm author and license. If nothing appears, a password is required.
+            <br />Step 3: Upload .ots file to <a href="https://opentimestamps.org/#stamp-and-verify" target="_blank">OpenTimestamps.org</a>
+            <br />Step 4: Upload the corresponding stegastamped image file to confirm timestamp date.
+            <br />
+            <br />NOTE: It will take 1-2 hours before newly created .ots files can be verified.
+            <br />"Pending attestation" indicated this delay.
+          </p>
+
+        </div>
+      </div>
+      <!--<img src="img/ipad.png" class="img-fluid" alt="">-->
+    </div>
+  </section>
+
+</body>
+  <div id='main' class='section dark'>
+      <div class='step'>Step 1: Upload Image</div>
+      <img id='preview' class='preview hide' />
+      <div class='sectionbody'>
+          <input type='file' id='file' />
+      </div>
+  </div>
+  <div id='choose' class='section dark hide'>
+      <div class='step'>Step 2: Author and License</div>
+      <div class='sectionbody'>
+          <div class='left'>
+              <textarea id='message' class='message' maxlength='500'
+                  placeholder='Author Name        Creative License        ex: "Bob Dole               CC BY"'></textarea>
+              <input type='password' id='password' class='password'
+                  placeholder='Password (optional)' />
+              <button id='encode' class='submit'>Embed message</button>
+          </div>
+          <div class='right'>
+              <input type='password' id='password2' class='password'
+                  placeholder='Password' />
+              <button id='decode' class='submit'>Reveal message</button>
+          </div>
+      </div>
+  </div>
+  <div id='reveal' class='section dark hide'>
+      <div class='step'>Author and License</div>
+      <div id='messageDecoded' class='sectionbody'></div>
+  </div>
+  <canvas id='canvas' class='hide'></canvas>
+  <img id='output' />
+</body>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      Copyright &copy; Dan Kercher and Vivek Bigelow
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
+
+</body>
+
+</html>
