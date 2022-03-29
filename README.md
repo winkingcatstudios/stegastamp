@@ -1,2 +1,2 @@
 # stegastamp
-A steganography and time stamp solution to authenticate digital artwork authorship
+A steganography and time stamping solution to authenticate digital artwork authorship
